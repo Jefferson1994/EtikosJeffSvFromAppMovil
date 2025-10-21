@@ -50,7 +50,7 @@ const CompaniesScreen = ({ navigation }) => {
     useEffect(() => {
         // Ejecuta la función solo si el ID y el token están presentes
         if (idAdministrador && authToken) {
-            fetchCompanies();
+            //fetchCompanies();
         } else {
             // Si falta el token, detiene la carga y muestra un error
             setIsLoading(false);
@@ -59,56 +59,21 @@ const CompaniesScreen = ({ navigation }) => {
     }, [idAdministrador, authToken]); // El efecto se re-ejecuta si el ID o el token cambian
 
     // 5. Lógica de renderizado condicional para mostrar la UI
-    const renderContent = () => {
-        if (isLoading) {
-            return <ActivityIndicator size="large" color="#5A58EE" style={styles.loadingIndicator} />;
-        }
-        if (error) {
-            return <Text style={styles.errorText}>Error: {error}</Text>;
-        }
-        if (companies.length === 0) {
-            return <Text style={styles.noCompaniesText}>No hay empresas asociadas.</Text>;
-        }
-        return (
-            <View style={styles.listContainer}>
-                {companies.map(company => (
-                    <View key={company.id} style={styles.companyCard}>
-                        <View style={styles.companyInfo}>
-                            <Icon name="building" size={24} color="#5A58EE" style={styles.icon} />
-                            <Text style={styles.companyName}>{company.nombre}</Text>
-                            <Text style={styles.companyAddress}>{company.direccion}</Text>
-                            <Text style={styles.companyRuc}>RUC: {company.ruc}</Text>
-                        </View>
-                        <View style={styles.cardActions}>
-                            <TouchableOpacity style={styles.actionButton}>
-                                <Icon name="pencil" size={18} color="#5A58EE" />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.actionButton}>
-                                <Icon name="trash" size={18} color="#E74C3C" />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                ))}
-            </View>
-        );
-    };
+
 
     // 6. Vista principal del componente
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollContent}>
                 <View style={styles.headerContainer}>
-                    <Text style={styles.header}>Gestión de Empresas</Text>
+                    <Text style={styles.header}>Administrar Contraseñas</Text>
                 </View>
                 <Text style={styles.subtitle}>
-                    Aquí puedes ver y administrar las empresas asociadas.
+                    Aquí se muestran la funcionalidad cambiar  contraseñas .
                 </Text>
-                {renderContent()}
+                
             </ScrollView>
-            <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('CreateCompany')}>
-                <Icon name="plus-circle" size={24} color="#FFFFFF" />
-                <Text style={styles.addButtonText}>Agregar Empresa</Text>
-            </TouchableOpacity>
+    
         </SafeAreaView>
     );
 };

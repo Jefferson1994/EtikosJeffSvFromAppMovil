@@ -11,15 +11,15 @@ import { initializeAuth } from './src/features/auth/presentation/slices/authSlic
 
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
-import LoginScreen from './src/features/auth/presentation/screens/LoginScreen';
+import LoginScreen from './src/features/auth/presentation/screens/LoginScreen.';
 import SignupScreen from './src/features/auth/presentation/screens/SignupScreen';
 import CollaboratorDashboard from './src/features/auth/presentation/screens/CollaboratorDashboard';
 import ClientDashboard from './src/features/auth/presentation/screens/ClientDashboard';
 import AdminDashboard from './src/features/adminDashboard/presentation/screens/AdminDashboard';
 
 const Stack = createStackNavigator();
-const ROL_ADMIN = 2;
-const ROL_COLABORADOR = 3;
+const ROL_ADMIN = 1;
+const ROL_COLABORADOR = 2;
 const ROL_CLIENTE = 4;
 
 const AppContent = () => {
@@ -44,11 +44,7 @@ const AppContent = () => {
         return <AdminDashboard />;
 
       case ROL_COLABORADOR:
-        return (
-          <Stack.Navigator>
-            <Stack.Screen name="CollaboratorDashboard" component={CollaboratorDashboard} options={{ headerShown: false }} />
-          </Stack.Navigator>
-        );
+        return <AdminDashboard />;
       case ROL_CLIENTE:
         return (
           <Stack.Navigator>

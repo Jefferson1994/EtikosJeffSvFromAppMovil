@@ -55,33 +55,20 @@ const MainTabs = () => {
             <Tab.Screen
                 name="MainDashboard"
                 component={MainDashboardScreen}
-                options={{ title: 'Principal' }}
+                options={{ title: 'Dashboard' }}
             />
             <Tab.Screen
                 name="Companies"
                 component={CompaniesScreen}
-                options={{ title: 'Empresas' }}
+                options={{ title: 'Contraseñas' }}
             />
             <Tab.Screen
-                name="CompaniesStack" // Usa el nombre de la pila
+                name="Collaborators" // Usa el nombre de la pila
                 component={CompaniesStack} // Y el componente de la pila
-                options={{ title: 'Empresas' }}
+                options={{ title: ' Usurios' }}
             />
-            <Tab.Screen
-                name="Collaborators"
-                component={CollaboratorsScreen}
-                options={{ title: 'Colaboradores' }}
-            />
-            <Tab.Screen
-                name="Products"
-                component={ProductsScreen}
-                options={{ title: 'Productos' }}
-            />
-            <Tab.Screen
-                name="Services"
-                component={ServicesScreen}
-                options={{ title: 'Servicios' }}
-            />
+           
+
         </Tab.Navigator>
     );
 };

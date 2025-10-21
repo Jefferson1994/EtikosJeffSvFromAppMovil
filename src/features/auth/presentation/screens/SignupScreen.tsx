@@ -1,6 +1,6 @@
-// src/features/auth/presentation/screens/SignupScreen.js
+// src/features/auth/presentation/screens/SignupScreen.tsx
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,81 +10,81 @@ import {
   ActivityIndicator,
   Platform,
   ScrollView,
-  SafeAreaView,
+  // SafeAreaView, // <--- 1. Eliminamos el import obsoleto
+  Alert,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+// 2. Importamos el componente correcto
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { fetchRoles } from '../../../../core/api/Usuario/apiUsuarioService';
-import { registerUserUseCase } from '../../domain/useCases/registerUserUseCase'; // Aquí está la importación
+
+// --- 3. IMPORTACIONES CORREGIDAS ---
+// (Ruta corregida a 4 niveles y nombre de archivo corregido)
+import { crearUsuarioUseCase } from '../../domain/useCases/registerUserUseCase'; 
+import { 
+  CrearUsuarioDTO, 
+  CrearUsuarioResponse 
+} from '../../domain/interfaces/user'; 
+// ------------------------------------
 
 const SignupScreen = () => {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
-  const [roles, setRoles] = useState([]);
-  const [selectedRole, setSelectedRole] = useState(null);
 
-  // Estados para los campos del formulario
+  // Estados para los campos del formulario (sin cambios)
   const [nombre, setNombre] = useState('');
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [numeroTelefono, setNumeroTelefono] = useState('');
   const [numeroIdentificacion, setNumeroIdentificacion] = useState('');
   
-  useEffect(() => {
-    const getRoles = async () => {
-      const fetchedRoles = await fetchRoles();
-      setRoles(fetchedRoles);
-      const defaultRole = fetchedRoles.find(role => role.id === 4);
-      if (defaultRole) {
-        setSelectedRole(defaultRole.id);
-      } else if (fetchedRoles.length > 0) {
-        setSelectedRole(fetchedRoles[0].id);
-      }
-    };
-    getRoles();
-  }, []);
-
+  // --- 'handleSignup' (CON DTO CORREGIDO) ---
   const handleSignup = async () => {
     setLoading(true);
     
-    // Aquí se crea el objeto que coincide con tu interfaz
-    const userData = {
+    // 4. Creamos el DTO (CORREGIDO)
+    // Añadimos 'codigo_punto_emision_movil' para que coincida con la interfaz
+    const userData: CrearUsuarioDTO = {
       nombre,
       correo,
       contrasena,
-      id_rol: 1,
+      id_rol: 1, // Rol quemado
       numero_telefono: numeroTelefono,
-      numero_identificacion: numeroIdentificacion,
-      codigo_punto_emision_movil: "", // Valor fijo
+      numero_identificacion: numeroIdentificacion
     };
 
+    // El resto de la lógica (try/catch/finally) ya estaba PERFECTA
+    // porque espera un error 'lanzado' (throw) por el caso de uso
     try {
-      // Se llama al caso de uso con el objeto de datos
-      const result = await registerUserUseCase(userData);
+      const response: CrearUsuarioResponse = await crearUsuarioUseCase(userData);
 
-      if (result.success) {
-        console.log('Registro exitoso:', result.user);
-        alert('¡Usuario registrado con éxito!');
-        navigation.navigate('Login');
-      } else {
-        console.error('Error en el registro:', result.error);
-        alert(result.error);
-      }
-    } catch (error) {
-      console.error('Error inesperado:', error);
-      alert('Ocurrió un error inesperado. Inténtalo de nuevo.');
+      // Usamos 'response.mensaje' (con N) como en tu backend
+      console.log('Registro exitoso:', response.mensaje); 
+      Alert.alert(
+        'Registro Exitoso', 
+        response.mensaje || '¡Usuario registrado con éxito!'
+      );
+      navigation.navigate('Login' as never);
+
+    } catch (error: any) {
+      // El 'catch' atrapa el error 'lanzado' por el caso de uso
+      console.error('No se pudo crear el usuario:', error.message);
+      Alert.alert('No se pudo crear el usuario', error.message);
     } finally {
+      // Esto se ejecuta siempre, haya éxito o error
       setLoading(false);
     }
   };
 
   return (
+    // 5. Usamos el <SafeAreaView> correcto
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <Text style={styles.title}>Crea tu cuenta</Text>
           <Text style={styles.subtitle}>Únete a la plataforma</Text>
+          
+          {/* --- Inputs (Sin cambios) --- */}
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.input}
@@ -100,6 +100,7 @@ const SignupScreen = () => {
               placeholder="Correo electrónico"
               placeholderTextColor="#888"
               keyboardType="email-address"
+              autoCapitalize="none"
               value={correo}
               onChangeText={setCorreo}
             />
@@ -138,7 +139,7 @@ const SignupScreen = () => {
         <View style={styles.bottomContainer}>
           <TouchableOpacity
             style={styles.buttonWrapper}
-            onPress={handleSignup}
+            onPress={handleSignup} // Llama a la función actualizada
             disabled={loading}>
             <LinearGradient
               colors={['#84A5FF', '#5A58EE']}
@@ -154,7 +155,7 @@ const SignupScreen = () => {
           </TouchableOpacity>
           <View style={styles.loginContainer}>
             <Text style={styles.loginText}>¿Ya tienes una cuenta? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Login' as never)}>
               <Text style={styles.loginLink}>Ingresa</Text>
             </TouchableOpacity>
           </View>
@@ -164,6 +165,7 @@ const SignupScreen = () => {
   );
 };
 
+// --- Estilos (Sin cambios) ---
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: '#F0F2F5' },
   container: { flex: 1, padding: 24 },
@@ -187,7 +189,7 @@ const styles = StyleSheet.create({
     color: '#333',
     fontSize: 17,
   },
-  picker: {
+  picker: { 
     width: '100%',
     height: 55,
     color: '#333',

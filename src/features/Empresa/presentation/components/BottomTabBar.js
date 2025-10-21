@@ -7,11 +7,10 @@ import ProductsIcon from '../../assets/icons/ProductsIcon';
 import ServicesIcon from '../../assets/icons/ServicesIcon';
 
 const tabs = [
-    { name: 'Principal', icon: HomeIcon, screen: 'Main' },
-    { name: 'Empresas', icon: CompaniesIcon, screen: 'Companies' },
-    { name: 'Colaboradores', icon: CollaboratorsIcon, screen: 'Collaborators' },
-    { name: 'Productos', icon: ProductsIcon, screen: 'Products' },
-    { name: 'Servicios', icon: ServicesIcon, screen: 'Services' },
+    { name: 'Dashboard', icon: HomeIcon, screen: 'Main' },
+    { name: 'Administrar Contraseñas', icon: CompaniesIcon, screen: 'Companies' },
+    { name: 'Administrar Usurios', icon: CollaboratorsIcon, screen: 'Collaborators' },
+
 ];
 
 const BottomTabBar = ({ state, navigation }) => {
