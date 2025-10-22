@@ -84,6 +84,7 @@ Esta aplicación consume una API REST desarrollada en Node.js, la cual gestiona 
     Desde ahí puedes:
 
     Escanear el código QR con la app Expo Go (en tu teléfono Android o iOS) para abrir la aplicación móvil directamente.
+    y valide logendose con un usario con 2FA y un usario que no tenga activado este doble factor
 
 
 ### 6. Arquitectura 
@@ -93,7 +94,7 @@ Arquitectura General del sistema
 ![Diagrama de Arquitectura del Sistema](./docs/ArquitecturaGeneral.png)
 
 
-Arquitectura Limpia en  el Frontend Web
+Arquitectura Limpia en  la App Movil
 
 ![Diagrama de Arquitectura del Backend](./docs/cleanArquitecture.png)
 
