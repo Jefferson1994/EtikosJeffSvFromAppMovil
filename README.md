@@ -59,12 +59,19 @@ para que la app móvil (en su teléfono) pueda encontrar el servidor (en su PC),
 Encuentre su IP Local:
 
 Windows: Abra cmd y escriba ipconfig. Busque su dirección "IPv4 Address" 
-
 Mac/Linux: Abra una terminal y escriba ifconfig o ip addr. Busque su dirección "inet" 
 
+**Editar archivo de configuración
+
+Abra el archivo:
 `src\features\auth\data\repositories\authRepository.ts`
 
-en este archivo cambie le url base con su ip en esta variable const API_BASE_URL = 'http://192.168.100.50:3000/user'; 
+Luego, reemplace la URL base por su IP local en la variable:
+
+const API_BASE_URL = 'http://192.168.100.50:3000/user';
+
+
+Sustituya 192.168.100.50 por la IP local de su equipo.
 
 
 5.  **Ejecutar el Servidor de Desarrollo**
@@ -72,8 +79,10 @@ en este archivo cambie le url base con su ip en esta variable const API_BASE_URL
     ```bash
     npx expo start
     ```
-    React te permitira abbri en plaformas web como movil nosotros scaneramos el qr con la app que de expo y se ejecutara 
-    la app web 
+    Esto abrirá la interfaz de Expo Developer Tools en tu navegador.
+    Desde ahí puedes:
+
+    Escanear el código QR con la app Expo Go (en tu teléfono Android o iOS) para abrir la aplicación móvil directamente.
 
 ## 🧪 Credenciales de Prueba (Administrador)
 
