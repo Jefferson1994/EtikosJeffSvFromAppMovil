@@ -1,6 +1,6 @@
 
 
-# Frontend Web  - Prueba Técnica Etikos 
+# Frontend App Movil  - Prueba Técnica Etikos 
 
 Este repositorio contiene el cliente Movil (Frontend) del proyecto "Prueba Técnica -Etikos Jardín azuayo". Esta aplicación está desarrollada en **React Native y Expo** e implementa una **Arquitectura Limpia (Clean Architecture)** para garantizar la mantenibilidad y escalabilidad del código.
 
@@ -39,21 +39,34 @@ Esta aplicación consume una API REST desarrollada en Node.js, la cual gestiona 
 
 1.  **Clonar el repositorio**
 
-    git clone y el link de este repositorio
+    git clone https://github.com/Jefferson1994/EtikosJeffSvFromAppMovil.git
 
 2.  **Acceder al directorio del proyecto**
+    
     cd EtikosJeffSvFromAppMovil
 
 
 3.  **Instalar dependencias**
+
     npm install
 
 
 4.  **Configurar el Entorno**
-    Este proyecto necesita conectarse a la API de backend.  `src/app/environments/environment.ts` hay dos url podemos apuntar al back local o al back desplegado 
-    en render.
 
-    El prefijo de la API de preproducción desplegada en Render es: `https://etikosjeffsvback.onrender.com/`.
+`src\features\auth\data\repositories\authRepository.ts`
+
+para que la app móvil (en su teléfono) pueda encontrar el servidor (en su PC), no puede usar localhost. Debe usar la dirección IP de su máquina en la red local.
+
+Encuentre su IP Local:
+
+Windows: Abra cmd y escriba ipconfig. Busque su dirección "IPv4 Address" 
+
+Mac/Linux: Abra una terminal y escriba ifconfig o ip addr. Busque su dirección "inet" 
+
+`src\features\auth\data\repositories\authRepository.ts`
+
+en este archivo cambie le url base con su ip en esta variable const API_BASE_URL = 'http://192.168.100.50:3000/user'; 
+
 
 5.  **Ejecutar el Servidor de Desarrollo**
     Inicia el servidor de desarrollo local:
