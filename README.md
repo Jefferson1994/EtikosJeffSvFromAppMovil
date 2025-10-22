@@ -59,9 +59,10 @@ Esta aplicación consume una API REST desarrollada en Node.js, la cual gestiona 
     Encuentre su IP Local:
 
     Windows: Abra cmd y escriba ipconfig. Busque su dirección "IPv4 Address" 
+    
     Mac/Linux: Abra una terminal y escriba ifconfig o ip addr. Busque su dirección "inet" 
 
-    **Editar archivo de configuración
+    **Editar archivo 
 
     Abra el archivo:
     `src\features\auth\data\repositories\authRepository.ts`
