@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { UserCredentials, LoginResult, UserverificarCuenta, CrearUsuarioDTO, CrearUsuarioResponse } from '../../domain/interfaces/user';
 // Asegúrate de que esta sea la IP de tu PC
-const API_BASE_URL = 'http://192.168.100.50:3000/user'; 
+const API_BASE_URL = 'http://192.168.40.203:3000/user'; 
 
 export const crearUsuario = async (
   crearUsario: CrearUsuarioDTO

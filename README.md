@@ -31,7 +31,7 @@ Esta aplicación consume una API REST desarrollada en Node.js, la cual gestiona 
 1.  **Node.js** (v18 o superior).
 2.  **npm** o **yarn**.
 3.  **Expo CLI** (globalmente): `npm install -g expo-cli`.
-4.  **Expo Go (App Móvil):** Tener instalada la app "Expo Go" en su dispositivo iOS o Android.
+4.  **Expo Go (App Móvil):** Tener instalada la app "Expo Go" en su dispositivo iOS o Android. Link para Android https://play.google.com/store/apps/details?id=host.exp.exponent
 5.  **Backend Corriendo:** El servido debe estar ejecutándose localmente (ej. en `http://localhost:3000`).
 
 ## ⚙️ Instalación y Puesta en Marcha
@@ -85,6 +85,11 @@ Esta aplicación consume una API REST desarrollada en Node.js, la cual gestiona 
 
     Escanear el código QR con la app Expo Go (en tu teléfono Android o iOS) para abrir la aplicación móvil directamente.
     y valide logendose con un usario con 2FA y un usario que no tenga activado este doble factor
+
+    Usuario Admin no tiene activo el 2FA
+    
+    Email: pruebaEtikos1@outlook.com
+    Password: Etikos12025#
 
 
 ### 6. Arquitectura 
