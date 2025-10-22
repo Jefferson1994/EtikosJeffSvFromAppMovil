@@ -54,24 +54,24 @@ Esta aplicación consume una API REST desarrollada en Node.js, la cual gestiona 
 4.  **Configurar el Entorno**
 
 
-para que la app móvil (en su teléfono) pueda encontrar el servidor (en su PC), no puede usar localhost. Debe usar la dirección IP de su máquina en la red local.
+    Para que la app móvil (en su teléfono) pueda encontrar el servidor (en su PC), no puede usar localhost.Debe usar la       dirección IP de su máquina en la red local.
 
-Encuentre su IP Local:
+    Encuentre su IP Local:
 
-Windows: Abra cmd y escriba ipconfig. Busque su dirección "IPv4 Address" 
-Mac/Linux: Abra una terminal y escriba ifconfig o ip addr. Busque su dirección "inet" 
+    Windows: Abra cmd y escriba ipconfig. Busque su dirección "IPv4 Address" 
+    Mac/Linux: Abra una terminal y escriba ifconfig o ip addr. Busque su dirección "inet" 
 
-**Editar archivo de configuración
+    **Editar archivo de configuración
 
-Abra el archivo:
-`src\features\auth\data\repositories\authRepository.ts`
+    Abra el archivo:
+    `src\features\auth\data\repositories\authRepository.ts`
 
-Luego, reemplace la URL base por su IP local en la variable:
+    Luego, reemplace la URL base por su IP local en la variable:
 
-const API_BASE_URL = 'http://192.168.100.50:3000/user';
+    const API_BASE_URL = 'http://192.168.100.50:3000/user';
 
 
-Sustituya 192.168.100.50 por la IP local de su equipo.
+    Sustituya 192.168.100.50 por la IP local de su equipo.
 
 
 5.  **Ejecutar el Servidor de Desarrollo**
