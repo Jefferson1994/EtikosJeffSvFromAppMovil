@@ -85,12 +85,6 @@ Esta aplicación consume una API REST desarrollada en Node.js, la cual gestiona 
 
     Escanear el código QR con la app Expo Go (en tu teléfono Android o iOS) para abrir la aplicación móvil directamente.
 
-## 🧪 Credenciales de Prueba (Administrador)
-
-Para probar las funcionalidades de administración como bloquear/desbloquear usuarios, puedes utilizar las siguientes credenciales:
-
-* **Email:** `pruebaEtikos1@outlook.com` 
-* **Password:** `Etikos12025#` 
 
 ### 6. Arquitectura 
 
