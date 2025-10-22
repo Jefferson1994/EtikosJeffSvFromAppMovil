@@ -53,7 +53,6 @@ Esta aplicación consume una API REST desarrollada en Node.js, la cual gestiona 
 
 4.  **Configurar el Entorno**
 
-`src\features\auth\data\repositories\authRepository.ts`
 
 para que la app móvil (en su teléfono) pueda encontrar el servidor (en su PC), no puede usar localhost. Debe usar la dirección IP de su máquina en la red local.
 
